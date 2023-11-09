@@ -114,5 +114,36 @@ int main() {
         }
     }
 
+    std::cout << "---------------------------" << std::endl;
+
+    {
+        try {
+            std::vector<int> other;
+            std::cout << "try to go over max_size() of vector" << std::endl;
+
+            std::size_t test_size = other.max_size() + 20;
+
+            std::cout << "max_size(): " << other.max_size() << "\n"
+                      << "test_size: " << test_size << std::endl;
+
+            Span base(test_size);
+
+            std::cout << "Note: remove comment in the constructer to see that "
+                         "test_size will be reduced to max_size()"
+                      << std::endl;
+
+            std::cout << "Note: if adding number until test_size will throw "
+                         "exception like "
+                         "the previous test indicating span is full"
+                      << std::endl;
+
+            for (std::size_t i = 0; i < test_size; i++)
+                base.addNumber(i); // No exception because can fit all numbers
+
+        } catch (const std::exception &e) {
+            std::cerr << "Expection: " << e.what() << '\n';
+        }
+    }
+
     return 0;
 }

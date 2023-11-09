@@ -2,7 +2,11 @@
 
 Span::Span() {}
 
-Span::Span(unsigned int maxsize) { this->_items.reserve(maxsize); }
+Span::Span(unsigned int maxsize) {
+
+    this->_items.reserve(maxsize);
+    // std::cout << "max_size is: " << this->_items.max_size() << std::endl;
+}
 
 Span::Span(const Span &src) : _items(src._items) {}
 
